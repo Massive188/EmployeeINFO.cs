@@ -1,0 +1,62 @@
+using RoqueDiaz_Course_Project_part2_feb22;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RoqueDiaz_Course_Project_part2_jan22
+{   
+    [Serializable]
+    class Salary : Employee
+    {
+        // attributes
+        private double annualSalary;
+       
+        //constructors
+
+        public Salary() : base()
+        {
+            annualSalary = 0.0;
+        }
+        public Salary(string firstName, string lastName, string ssn,
+            DateTime hireDate, Benefits benefits, double salary) : base(firstName, lastName,
+                ssn, hireDate, benefits)
+        {
+            AnnualSalary = annualSalary;
+        }
+
+        public Salary(string fname, string lname, string ssn, DateTime hdate, Benefits benefits) : base(fname, lname, ssn, hdate, benefits)
+        {
+            
+        }
+
+        //behavior
+        public override string ToString()
+        {
+            return base.ToString() + ", Salary: " + annualSalary.
+                ToString("C");
+        }
+
+        public override double CalculatePay => annualSalary / 26.0;
+
+        //properties
+        public double AnnualSalary
+        {
+            get
+            {
+                return annualSalary;
+            }
+            set
+            {
+                if (value > 0.0 && value < 1000000.0)
+                    annualSalary = value;
+                else
+                    annualSalary = 0.0;
+
+                
+            }
+        }
+    }
+}
+

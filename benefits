@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RoqueDiaz_Course_Project_part2_jan22
+{
+    [Serializable]
+    class Benefits
+    {
+        // attributes
+        private string healthInsurance;
+        private double lifeInsurance;
+        private int vacation;
+        
+
+        public Benefits(string healthInsurance)
+        {
+            this.healthInsurance = healthInsurance;
+        }
+
+        // Constructors
+        public Benefits()
+        {
+            healthInsurance = "unknown";
+            lifeInsurance = 0.0;
+            vacation = 0;
+        }
+
+        public Benefits(string healthInsurance, double lifeInsurance, int vacation)
+        {
+            this.healthInsurance = healthInsurance;
+            this.LifeInsurance = lifeInsurance;
+            Vacation = vacation;
+
+        }
+        //Behaviors
+        public override string ToString()
+        {
+            return "HealthInsurance:" + healthInsurance + ",LifeInsurance:" + lifeInsurance 
+                + ",VacationDays:" + vacation;
+        }
+        //properties (get/set methods)
+        public double LifeInsurance
+        {
+            get
+            {
+                return lifeInsurance;
+            }
+            set
+            {
+                if (value > 0.0 && value <= 1000000.0)
+                    lifeInsurance = value;
+                else
+                   lifeInsurance = 0.0;
+            }
+        }
+        public int Vacation
+        {
+            get
+            {
+                return vacation;
+            }
+            set
+            {
+                if (value > 0 && value <= 40)
+                    vacation = value;
+                else
+                    vacation = 0;
+            }
+        }
+
+        public string HealthInsurance { get; internal set; }
+    }
+}
+
+
